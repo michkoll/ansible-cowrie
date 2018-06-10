@@ -7,3 +7,6 @@
 
 # from github
 # - src: http://github.com/path/to/role
+
+# Cowrie-role
+- src: https://github.com/michkoll/ansible-role-cowrie
