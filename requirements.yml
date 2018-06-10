@@ -1,0 +1,9 @@
+# Install requirements
+# ansible-galaxy install --force --roles-path <roles-path> -r requirements.yml
+
+
+# from galaxy
+# - src: name.role
+
+# from github
+# - src: http://github.com/path/to/role

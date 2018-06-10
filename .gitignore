@@ -1,1 +1,4 @@
 *.retry
+
+# Ignore imported roles
+*/roles/*

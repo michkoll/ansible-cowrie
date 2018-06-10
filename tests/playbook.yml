@@ -1,0 +1,14 @@
+---
+hosts: all
+gather_facts: yes
+become: yes
+
+vars: []
+
+pre_task: []
+
+
+# add roles for test here
+roles: []
+
+tasks: []

@@ -1,0 +1,31 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+# Use VirtualBox
+USE_PROVIDER = "virtualbox"
+NETWORK_PRIVATE_IP_PREFIX = "172.16.3"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.ssh.insert_key = false
+
+  #VirtualBox
+  config.vm.provider :virtualbox do |v|
+    v.memory = 1024
+    v.cpus = 2
+    v.customize ["modifyvm"], id:, "--natdnshostresolver1", "on"]
+    v.customize ["modifyvm"], id:, "--ioapic", "on"]
+  end
+
+  config.vm.define "ubuntu1604" do |ubuntu1604|
+    ubuntu1604.vm.hostname = "ubuntu1604test"
+    ubuntu1604.vm.box = "geerlingguy/ubuntu1604"
+    ubuntu1604.vm.network :private_network, ip: NETWORK_PRIVATE_IP_PREFIX + "2"
+
+    # Provision
+    ubuntu1604.vm.provision "ansible" do |ansible|
+      ansible.playbook = "playbook.yml"
+    end
+  end
+end
