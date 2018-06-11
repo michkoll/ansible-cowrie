@@ -1,14 +1,15 @@
 ---
-hosts: all
-gather_facts: yes
-become: yes
+- hosts: all
+  gather_facts: no
+  become: yes
 
-vars: []
+  vars: []
 
-pre_task: []
+  pre_tasks: []
 
 
 # add roles for test here
-roles: []
+  roles:
+    - ../roles/cowrie
 
-tasks: []
+  tasks: []

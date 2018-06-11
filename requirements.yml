@@ -11,3 +11,7 @@
 # Cowrie-role
 - src: https://github.com/michkoll/ansible-role-cowrie
   name: cowrie
+
+# Server hardening role
+- src: https://github.com/michkoll/ansible-role-hardening
+  name: hardening

@@ -1,0 +1,6 @@
+# all
+#------------------
+#
+# Group vars for all hosts
+
+ansible_port: "{{ hardening_ssh_port | default(22) }}"

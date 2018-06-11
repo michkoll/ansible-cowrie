@@ -1,0 +1,5 @@
+# ubuntu.yml
+#--------------
+#
+# Amazon EC2 config for ubuntu hosts
+ansible_ssh_user: ubuntu
