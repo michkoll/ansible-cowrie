@@ -9,6 +9,10 @@ NETWORK_PRIVATE_IP_PREFIX = "172.16.3."
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
+  config.ssh.port = 49222
+  #config.vm.network "forwarded_port", guest: 49222, host: 2222, protocol: "tcp", id: 'ssh'
+  config.vm.network "forwarded_port", guest: 22, host: 2224, protocol: "tcp"
+  config.vm.network "forwarded_port", guest: 49222, host: 49222, protocol: "tcp", id: 'ssh'
 
   #VirtualBox
   config.vm.provider :virtualbox do |v|
@@ -27,10 +31,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Provision
     ubuntu1604.vm.provision "ansible" do |ansible|
       ansible.playbook = "playbook.yml"
+      ansible.verbose = "-vvv"
       #ansible.become = true
       #ansible.ask_become_pass = true
       ansible.extra_vars = {
-        hardening_ssh: "False"
+        hardening_ssh: "False",
+        #hardening_iptables: "False"
+        ansible_port: 49222
       }
     end
   end
