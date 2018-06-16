@@ -16,3 +16,8 @@
 # Server hardening role
 - src: https://github.com/michkoll/ansible-role-hardening
   name: hardening
+
+# Server hardening role
+- src: https://github.com/michkoll/ansible-role-kippo-graph
+  name: kippo-graph
+  version: origin/develop

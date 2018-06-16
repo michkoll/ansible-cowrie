@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.ssh.insert_key = false
   config.ssh.port = 49222
   #config.vm.network "forwarded_port", guest: 49222, host: 2222, protocol: "tcp", id: 'ssh'
-  config.vm.network "forwarded_port", guest: 22, host: 2224, protocol: "tcp"
+  #config.vm.network "forwarded_port", guest: 22, host: 2224, protocol: "tcp"
   config.vm.network "forwarded_port", guest: 49222, host: 49222, protocol: "tcp", id: 'ssh'
 
   #VirtualBox
@@ -31,7 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Provision
     ubuntu1604.vm.provision "ansible" do |ansible|
       ansible.playbook = "playbook.yml"
-      ansible.verbose = "-vvv"
+      #ansible.verbose = "-vvv"
       #ansible.become = true
       #ansible.ask_become_pass = true
       ansible.extra_vars = {
