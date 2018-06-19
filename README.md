@@ -10,7 +10,7 @@ ansible-playbook site.yml
 
 ## Prerequisites
 
-### Install ansible roles
+#### Install ansible roles
 
 Before running the playbook you have to install the ansible roles used in this playbook. The roles should be installed the `roles/` directory (default configuration in provided `ansible.cfg`).
 
@@ -44,10 +44,13 @@ To establish a ssh connection to the EC2 instances you have to provide the corre
 
 ## Features
 
-1. Dynamic EC2 inventory
-1. Hardening server
-  * Change ssh port
-2. Dynamic SSH port validation
+1. Reads the aws machines for the given access keys
+2. Playbook will be executed for alle machines tagged in aws console with ```Name:Cowrie```
+3. Hardening options
+  1. change default ssh key to inventory variable ```ansible_port```
+  2. installs several iptables rule, only opening required cowrie ports
+3. Installs cowrie (for configuration options see role documentation)
+4. Install kippo-graph
 
 
 
@@ -56,5 +59,25 @@ To establish a ssh connection to the EC2 instances you have to provide the corre
 For local testing purpose a vagrant config is added. First add roles in `tests/playbook.yml`. Start vagrant machine.
 
 ```bash
-vagrant up
+vagrant up --no-provision
 ```
+
+Change the ssh port manually in ```/etc/ssh/sshd_config``` to the port configured in inventory and restart ssh service. If you use another port than ```49222``` you have to edit ```Vagrantfile```.
+
+Install python with ```sudo apt install python```
+
+You can provision the machine with
+```bash
+vagrant provision
+```
+
+License
+-------
+
+MIT
+
+Author Information
+------------------
+
+&copy; 2018
+Written by [Michael Koll](https://github.com/michkoll)

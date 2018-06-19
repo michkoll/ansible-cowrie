@@ -11,7 +11,7 @@
 # Cowrie-role
 - src: https://github.com/michkoll/ansible-role-cowrie
   name: cowrie
-  version: origin/develop
+  #version: origin/develop
 
 # Server hardening role
 - src: https://github.com/michkoll/ansible-role-hardening

@@ -36,6 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       #ansible.ask_become_pass = true
       ansible.extra_vars = {
         hardening_ssh: "False",
+        cowrie_clear_database: "True",
         #hardening_iptables: "False"
         ansible_port: 49222
       }
